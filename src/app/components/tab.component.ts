@@ -5,17 +5,25 @@ import { Tcontent } from "./tcontent.component";
   selector: "app-tab",
   template: `
     <div class="tabPane">
-      <h1>Tab</h1>
-      <ng-template #questionBlock>
-        <div class="tcontentPane">
-          <div class="botoes">
-            <h1>botoes aqui</h1>
-          </div>
-          <app-tcontent
-            [statement]="tcontents[currentTcontent].statement"
-          ></app-tcontent>
-        </div>
-      </ng-template>
+      <div class="botoes">
+        <button class="b" (click)="select(0)">
+          Tab 1
+        </button>
+        <button class="b" (click)="select(1)">
+          Tab 2
+        </button>
+        <button class="b" (click)="select(2)">
+          Tab 3
+        </button>
+        <button class="b" (click)="select(3)">
+          Tab 4
+        </button>
+      </div>
+      <div class="tcontentPane">
+        <app-tcontent
+          [statement]="tcontents[currentTcontent].statement"
+        ></app-tcontent>
+      </div>
     </div>
   `,
   styles: [
@@ -29,6 +37,9 @@ import { Tcontent } from "./tcontent.component";
         border-radius: 10px;
         border: 1px solid #aaa;
         background-color: #f0f0f0;
+      }
+      .b {
+        margin: 10px;
       }
     `
   ]
@@ -49,4 +60,8 @@ export class TabComponent {
     }
   ];
   currentTcontent = 0;
+
+  select(optionIndex: number) {
+    this.currentTcontent = optionIndex;
+  }
 }
